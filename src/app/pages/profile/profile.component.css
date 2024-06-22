@@ -1,0 +1,27 @@
+.profile-container {
+  display: flex;
+  margin-left: 250px; /* Asegura que el contenido esté al lado del sidebar */
+  padding: 20px;
+}
+
+.left-column {
+  flex: 1;
+  padding: 20px;
+}
+
+.right-column {
+  flex: 2;
+  padding: 20px;
+}
+
+.info-box {
+  background-color: #333;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+}
+
+.line {
+  height: 2px;
+  background-color: white;
+}

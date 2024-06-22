@@ -1,0 +1,105 @@
+/* Estilos generales */
+.main-container {
+  display: flex;
+  height: 100vh;
+  overflow-x: hidden; /* Evita que el contenido se desborde horizontalmente */
+}
+
+.app-sidebar {
+  width: 280px;
+  background-color: #333;
+  color: white;
+  padding: 20px;
+}
+
+.content {
+  flex-grow: 1;
+  background-color: #000;
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto; /* Permite hacer scroll vertical si el contenido es largo */
+}
+
+/* Estilos para la publicación */
+.post {
+  background-color: #222;
+  width: 100%;
+  max-width: 800px; /* Ancho máximo para pantallas grandes */
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.post-header {
+  margin-bottom: 10px;
+}
+
+.post-title {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.post-author {
+  font-size: 16px;
+  color: #999;
+}
+
+.post-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.post-description {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.post-actions {
+  display: flex;
+  flex-wrap: wrap; /* Asegura que los botones se envuelvan en pantallas pequeñas */
+  justify-content: space-around; /* Espacio uniforme entre botones */
+  margin-bottom: 10px;
+}
+
+.like-button, .comment-button {
+  flex: 1 1 45%; /* Flexibilidad para ajustarse al tamaño de la pantalla */
+  margin: 5px; /* Espacio entre los botones */
+  padding: 10px 20px;
+  background-color: #555;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.like-button:hover, .comment-button:hover {
+  background-color: #777;
+}
+
+.post-comments {
+  background-color: #333;
+  border-radius: 10px;
+  padding: 10px;
+  width: 100%;
+  max-width: 800px; /* Ancho máximo para pantallas grandes */
+  margin-top: 20px;
+}
+
+.comment {
+  margin-bottom: 10px;
+}
+
+.comment-author {
+  font-weight: bold;
+  color: #fff;
+}
+
+.comment-content {
+  color: #ccc;
+}

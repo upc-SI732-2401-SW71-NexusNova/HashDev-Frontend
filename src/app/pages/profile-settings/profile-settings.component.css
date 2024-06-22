@@ -1,0 +1,85 @@
+.main-container {
+  display: flex;
+  height: 100vh;
+}
+
+.main-container .container {
+  flex-grow: 1;
+  padding: 20px; /* Añade relleno según sea necesario */
+}
+
+.container-back {
+  background-color: #f7f7f7;
+  padding: 150px;
+  width: calc(100% - 283px); /* Resta el ancho del sidebar */
+}
+
+.user-info {
+  background-color: #fff;
+  padding: 80px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  max-width: 600px; /* Máximo ancho del formulario */
+  margin: 0 auto; /* Centra el formulario horizontalmente */
+}
+
+.profile-form {
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  color: #333;
+}
+
+.form-section {
+  margin-top: 20px;
+}
+
+h3 {
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.form-buttons {
+  margin-top: 20px;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button#cancelButton {
+  background-color: #f44336;
+  margin-left: 10px;
+}
+
+.error-messages {
+  color: #f44336;
+}

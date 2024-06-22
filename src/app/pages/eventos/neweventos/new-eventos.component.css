@@ -1,0 +1,92 @@
+/* new-eventos.component.css */
+.main-container {
+  display: flex;
+  height: 100vh;
+  margin-left: 250px; /* Mueve el contenido principal al costado del sidebar */
+  background-color: #f0f2f5; /* Fondo suave */
+}
+
+.content {
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-and-image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px; /* Espacio entre el formulario y la imagen */
+}
+
+.form-container {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  max-width: 500px; /* Ancho máximo del formulario */
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container img {
+  max-width: 500px; /* Ancho máximo de la imagen */
+  border-radius: 8px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+  font-weight: bold;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #f9f9f9;
+  transition: border-color 0.3s;
+}
+
+input:focus, textarea:focus {
+  border-color: #007bff;
+  outline: none;
+  background: white;
+}
+
+button {
+  width: 100%;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}

@@ -1,0 +1,19 @@
+<div class="main-container">
+  <app-sidebar></app-sidebar>
+  <div class="content">
+    <div *ngFor="let evento of eventos" class="card">
+      <img [src]="evento.image" class="card-img-top" alt="Placeholder Image">
+      <div class="overlay">
+        <a href="#" class="btn btn-overlay">Ver más</a>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{ evento.name }}</h5>
+        <p class="card-text">{{ evento.description }}</p>
+        <a href="#" class="btn btn-primary" style="color: white; text-decoration: none;">Reservar Cupo</a>
+      </div>
+    </div>
+  </div>
+  <div class="floating-circle">
+    <a href="/neweventos" class="btn btn-circle">+</a>
+  </div>
+</div>

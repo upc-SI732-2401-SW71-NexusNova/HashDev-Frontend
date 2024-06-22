@@ -1,0 +1,54 @@
+<div class="main-container">
+<app-sidebar></app-sidebar>
+<div class="container">
+  <div class="container-back">
+    <div class="user-info">
+      <form id="settings" action="" method="post" [formGroup]="UserSettingsForm" (submit)="onSubmit()" class="profile-form">
+        <h2>Editar datos de Perfil</h2>
+
+        <div class="form-section">
+          <h3>Credenciales:</h3>
+          <div class="form-group">
+            <input type="text" placeholder="Username" formControlName="Username" id="Username" required>
+          </div>
+          <div class="form-group">
+            <input type="email" placeholder="Email" formControlName="Email" id="Email" required>
+          </div>
+          <div class="form-group">
+            <input type="password" placeholder="Contraseña" formControlName="Password" id="Password" required> <!--change to text?-->
+          </div>
+          <div class="form-group">
+            <input type="password" placeholder="Repetir Contraseña" formControlName="confirmarpassword" id="confirmarpassword" required>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3>Personal Information:</h3>
+          <div class="form-group">
+            <input type="text" placeholder="Full Name" formControlName="FullName" id="FullName" required>
+          </div>
+          <div class="form-group">
+            <input type="text" placeholder="Biography" formControlName="Bio" id="Bio" required>
+          </div>
+          <div class="form-group">
+            <input type="text" placeholder="Location" formControlName="Location" id="Location" required>
+          </div>
+          <div class="form-group">
+            <input type="text" placeholder="Website" formControlName="Website" id="Website" required>
+          </div>
+          <div class="form-group">
+            <input type="text" placeholder="Github" formControlName="Github" id="Github" required>
+          </div>
+          <div class="form-group">
+            <input type="text" placeholder="Photo Link" formControlName="ProfilePictureUrl" id="ProfilePictureUrl" required>
+          </div>
+        </div>
+
+        <button id="submitButton" type="submit">Guardar cambios</button>
+        <button id="cancelButton" type="button" (click)="pageSettings()">Cancelar</button>
+        <div id="errorMessages" class="error-messages" [innerHTML]="errorMessage">{{errorMessage}}</div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>

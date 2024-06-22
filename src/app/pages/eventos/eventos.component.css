@@ -1,0 +1,128 @@
+.main-container {
+  display: flex;
+  height: 100vh;
+  margin-left: 250px; /* Mueve el contenido principal al costado del sidebar */
+}
+
+.content {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  gap: 1rem; /* Espacio entre las tarjetas */
+  color: #ffffff; /* Color del texto blanco para contrastar con el fondo negro */
+  padding: 70px;
+}
+
+.card {
+  position: relative;
+  background-color: #000000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  overflow: hidden; /* Asegura que el borde no se extienda fuera de la tarjeta */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05); /* Aumenta el tamaño de la tarjeta al hacer hover */
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2); /* Aumenta la sombra al hacer hover */
+}
+
+.image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 15rem;
+  object-fit: cover;
+  border-radius: 20px 20px 0 0; /* Borde redondeado solo en las esquinas superiores */
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(200, 200, 200, 0.8); /* Color plomo claro con opacidad */
+  opacity: 0; /* Inicialmente oculto */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease;
+}
+
+.overlay:hover {
+  opacity: 1; /* Mostrar overlay al hacer hover */
+}
+
+.btn-overlay {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-overlay:hover {
+  background-color: #e0e0e0; /* Cambio de color al hacer hover */
+}
+
+.card-body {
+  padding: 1rem;
+  text-align: center; /* Centra el contenido del card-body */
+}
+
+.card-body .btn {
+  background-color: #207e9a; /* Color verde */
+  color: #ffffff; /* Color del texto */
+  border: none; /* Quita el borde */
+  padding: 0.75rem 1.5rem; /* Espaciado interno */
+  border-radius: 10px; /* Bordes redondeados */
+  text-transform: uppercase; /* Mayúsculas */
+  font-weight: bold; /* Negrita */
+  transition: background-color 0.3s ease; /* Transición suave */
+  cursor: pointer; /* Cursor al pasar por encima */
+  display: inline-block; /* Hace que el botón se comporte como un bloque */
+}
+
+.card-body .btn:hover {
+  background-color: #0d4c71; /* Color verde oscuro al hacer hover */
+}
+
+.card-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.card-text {
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+.floating-circle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #207e9a; /* Color de fondo del círculo */
+  border-radius: 50%; /* Hace que sea un círculo */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Asegura que esté por encima del contenido */
+  transition: transform 0.3s ease; /* Transición suave para el tamaño */
+}
+
+.floating-circle:hover {
+  transform: scale(1.2); /* Aumenta el tamaño al hacer hover */
+}
+
+.btn-circle {
+  color: #ffffff; /* Color del símbolo */
+  font-size: 2rem;
+  text-decoration: none;
+}

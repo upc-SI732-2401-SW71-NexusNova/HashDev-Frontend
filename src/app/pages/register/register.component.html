@@ -1,0 +1,26 @@
+<div class="form-container">
+  <form id="myForm"  [formGroup]="UserRegistrationForm" (submit)="onSubmit()">
+    <div class="login-container">
+      <div class="login-box">
+        <div class="logo">
+          <br><br>
+          <img src="https://logowik.com/content/uploads/images/hash8448.logowik.com.webp">
+        </div>
+        <div class="input-container">
+          <div class="form-group">
+            <input type="text" placeholder="Username" formControlName="Username" id="Username" required >
+          </div>
+          <div class="form-group">
+          <input type="text" placeholder="Email" formControlName="Email" id="Email" required>
+          </div>
+          <div class="form-group">
+          <input type="Password" placeholder="Password" formControlName="Password" id="Password" required  >
+          </div>
+          <button id="registrarButton" class="registrar-button" type="submit">Registrarse</button>
+          <button id="cancelButton" type="button"><a href="login" style="color: white; text-decoration: none;">Cancelar</a></button>
+          <div id="errorMessages" class="error-messages" [innerHTML]="errorMessage">{{errorMessage}}</div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
