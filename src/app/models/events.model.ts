@@ -6,4 +6,5 @@ export interface Events{
   date: string,
   time: string,
   location: string,
+  UserId: string,
 }

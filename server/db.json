@@ -5,6 +5,24 @@
       "Username": "Dms",
       "Email": "damarists@gmail.com",
       "Password": "123456"
+    },
+    {
+      "id": "7aa8",
+      "Username": "Admin",
+      "Email": "admin@hashdev.pe",
+      "Password": "123456"
+    },
+    {
+      "id": "5ea9",
+      "Username": "Js12",
+      "Email": "juansuarez@gmail.com",
+      "Password": "123456"
+    },
+    {
+      "id": "e3bb",
+      "Username": "LuisM",
+      "Email": "luismagallanes@gmail.com",
+      "Password": "123456"
     }
   ],
   "Profile": [
@@ -27,7 +45,8 @@
       "description": "El congreso más grande del mundo centrado en la industria móvil, donde se presentan nuevas tecnologías móviles, dispositivos y tendencias en telecomunicaciones.",
       "date": "2024-08-22",
       "time": "08:00",
-      "location": "Washington"
+      "location": "Washington",
+      "UserId": "7aa8"
     },
     {
       "id": "2",
@@ -36,7 +55,8 @@
       "description": "Evento anual de Apple dirigido a desarrolladores, donde se presentan las últimas actualizaciones de software y hardware de la compañía.",
       "date": "2024-11-25",
       "time": "12:00",
-      "location": "Virtual"
+      "location": "Virtual",
+      "UserId": "7aa8"
     },
     {
       "id": "3",
@@ -45,7 +65,8 @@
       "description": "Conferencia anual de desarrolladores de Google donde se anuncian nuevas tecnologías, productos y actualizaciones de software de Google.",
       "date": "2024-11-13",
       "time": "08:00",
-      "location": "Virtual"
+      "location": "Virtual",
+      "UserId": "5ea9"
     },
     {
       "id": "4",
@@ -54,7 +75,8 @@
       "description": "Evento anual de desarrolladores de Microsoft donde se presentan nuevas herramientas, tecnologías y plataformas de la compañía.",
       "date": "2024-08-22",
       "time": "08:00",
-      "location": "New York"
+      "location": "New York",
+      "UserId": "5ea9"
     },
     {
       "id": "5",
@@ -63,7 +85,8 @@
       "description": "Evento anual organizado por TechCrunch que reúne a startups, emprendedores y líderes de la industria tecnológica para presentar y discutir las últimas tendencias y innovaciones.",
       "date": "2024-09-18",
       "time": "10:00",
-      "location": "Virtual"
+      "location": "Virtual",
+      "UserId": "e3bb"
     },
     {
       "id": "6",
@@ -72,7 +95,8 @@
       "description": "Conferencia anual de GitHub donde se discuten las últimas actualizaciones de la plataforma, tendencias en desarrollo de software y colaboración en código abierto.",
       "date": "2024-10-24",
       "time": "10:00",
-      "location": "Virtual"
+      "location": "Virtual",
+      "UserId": "e3bb"
     },
     {
       "id": "7",
@@ -81,7 +105,8 @@
       "description": "Conferencia anual de NVIDIA centrada en la innovación en computación visual y tecnologías de GPU, incluyendo inteligencia artificial, gráficos y ciencia de datos.",
       "date": "2024-06-24",
       "time": "19:00",
-      "location": "Virtual"
+      "location": "Virtual",
+      "UserId": "247b"
     },
     {
       "id": "49de",
@@ -90,7 +115,18 @@
       "description": "La Convención Europea de Blockchain es un evento en línea de cuatro días lleno de conferencias inspiradoras, paneles de discusión, talleres, reuniones individuales y redes de alto nivel.",
       "date": "2024-06-25",
       "time": "09:00",
-      "location": "Barcelona"
+      "location": "Barcelona",
+      "UserId": "247b"
+    },
+    {
+      "id": "a548",
+      "name": "IBM Think",
+      "image": "https://higherlogicdownload.s3.amazonaws.com/IMWUC/UploadedImages/V1exfruRyOd95pql6o3Z_ibm-think-2023-arvind-krishna-L.jpeg",
+      "description": "Evento anual de IBM que reúne a clientes, partners y líderes de la industria para explorar las últimas tecnologías en inteligencia artificial, nube, blockchain y seguridad.",
+      "date": "2024-06-26",
+      "time": "12:00",
+      "location": "Virtual",
+      "UserId": "247b"
     }
   ]
 }

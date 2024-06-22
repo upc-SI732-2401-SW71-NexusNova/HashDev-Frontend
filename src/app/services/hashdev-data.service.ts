@@ -80,7 +80,7 @@ export class HashdevDataService {
     );
   }
 
-  createEvent(event: Events): Observable<Events> {
+  createEvent(event: Omit<Events, "id">): Observable<Events> {
     return this.http.post<Events>(`${this.base_url}/Events`, event, this.httpOptions).pipe(
       catchError(this.handleError)
     );

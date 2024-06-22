@@ -1,19 +1,17 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { SidebarComponent } from '../../sidebar/sidebar.component';
-import {Events} from "../../../models/events.model";
-import {HashdevDataService} from "../../../services/hashdev-data.service";
+import { Events } from '../../../models/events.model';
+import { HashdevDataService } from '../../../services/hashdev-data.service';
+import {FormsModule} from "@angular/forms";
+import {SidebarComponent} from "../../sidebar/sidebar.component";
 
 @Component({
   selector: 'app-new-events',
   templateUrl: './new-eventos.component.html',
   standalone: true,
   imports: [
-    SidebarComponent,
-    CommonModule,
-    FormsModule
+    FormsModule,
+    SidebarComponent
   ],
   styleUrls: ['./new-eventos.component.css']
 })
@@ -24,7 +22,8 @@ export class NewEventosComponent {
     description: '',
     date: '',
     time: '',
-    location: ''
+    location: '',
+    UserId: ''
   };
 
   constructor(
@@ -33,14 +32,29 @@ export class NewEventosComponent {
   ) {}
 
   onSubmit() {
-    this.dataService.createEvent(this.newEvent as Events).subscribe(
-      (response) => {
-        console.log('Evento creado exitosamente', response);
-        this.router.navigate(['/eventos']);  // Navega de vuelta a la lista de eventos después de crear uno nuevo
-      },
-      (error) => {
-        console.error('Error al crear el evento', error);
-      }
-    );
+    const userId = this.getUserId();
+
+    if (userId) {
+      const eventToCreate: Omit<Events, 'id'> = {
+        ...this.newEvent,
+        UserId: userId
+      };
+
+      this.dataService.createEvent(eventToCreate).subscribe(
+        (response) => {
+          console.log('Evento creado exitosamente', response);
+          this.router.navigate(['/eventos']);
+        },
+        (error) => {
+          console.error('Error al crear el evento', error);
+        }
+      );
+    } else {
+      console.error('Error: No se pudo obtener el UserId del usuario autenticado');
+    }
+  }
+
+  private getUserId(): string | null {
+    return localStorage.getItem('UserId');
   }
 }
