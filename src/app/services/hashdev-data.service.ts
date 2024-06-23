@@ -6,7 +6,6 @@ import { environment } from '../../environments/environment';
 import { User } from '../models/user.model';
 import { Profile } from '../models/profile.model';
 import {Events} from "../models/events.model";
-import {Payment} from "../models/payment.model"; // Asegúrate de importar el modelo
 
 @Injectable({
   providedIn: 'root'
@@ -87,9 +86,23 @@ export class HashdevDataService {
     );
   }
 
-  savePayment(payment: { CardNumber: string; Amount: string; Currency: string; CardCVV: string }): Observable<any> {
+  savePayment(payment: {
+    CardNumber: string;
+    Amount: string | undefined;
+    Currency: string;
+    CardCVV: string
+  }): Observable<any> {
     return this.http.post(`${this.base_url}/Payment`, payment, this.httpOptions).pipe(
       catchError(this.handleError)
     );
+  }
+
+  saveRegistration(registration: { eventId: number | undefined; Apellidos: string; Nombres: string }): void {
+    localStorage.setItem('registration', JSON.stringify(registration));
+  }
+
+  getRegistration(): { Nombres: string, Apellidos: string, eventId: string } | null {
+    const registration = localStorage.getItem('registration');
+    return registration ? JSON.parse(registration) : null;
   }
 }

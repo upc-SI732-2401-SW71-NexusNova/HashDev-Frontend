@@ -13,7 +13,7 @@
       </div>
     </div>
   </div>
-  <div class="registration-form">
+  <div *ngIf="!isRegistered" class="registration-form">
     <br><br>
     <h3>Registrarse al evento</h3>
     <form (ngSubmit)="submitRegistrationForm()">
@@ -40,5 +40,16 @@
       <input type="hidden" id="Amount" name="Amount" [value]="evento?.price">
       <button type="submit" class="btn btn-primary">Registrarse</button>
     </form>
+  </div>
+  <div *ngIf="isRegistered" class="registration-details ticket">
+    <h3>Detalles del registro</h3>
+    <p><strong>Nombres:</strong> {{ registrationDetails?.Nombres }}</p>
+    <p><strong>Apellidos:</strong> {{ registrationDetails?.Apellidos }}</p>
+    <p><strong>Evento:</strong> {{ evento?.name }}</p>
+    <p><strong>Precio:</strong> {{ evento?.price }}</p>
+    <p><strong>Fecha:</strong> {{ evento?.date }}</p>
+    <p><strong>Hora:</strong> {{ evento?.time }}</p>
+    <p><strong>Lugar:</strong> {{ evento?.location }}</p>
+    <button class="btn btn-secondary no-print" (click)="printTicket()">Imprimir boleta</button>
   </div>
 </div>

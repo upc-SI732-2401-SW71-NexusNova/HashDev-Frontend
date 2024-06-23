@@ -140,9 +140,9 @@
   ],
   "Payment": [
     {
-      "id": "1e66",
-      "Amount": "$30.00",
-      "Currency": "Visa",
+      "id": "1e1e",
+      "Amount": "$90.00",
+      "Currency": "MasterCard",
       "CardNumber": "12345678901",
       "CardCVV": "123"
     }
