@@ -1,27 +1,19 @@
-<app-sidebar></app-sidebar>
-<div class="profile-container" *ngIf="Profile">
-  <div class="left-column">
-    <img *ngIf="Profile.ProfilePictureUrl" [src]="Profile.ProfilePictureUrl" alt="{{Profile.FullName}}">
-    <br>
-    <h1>{{Profile.FullName}}</h1>
-    <p>{{Profile.Bio}}</p>
-    <br>
-    <button type="submit" class="btn btn-primary" (click)="pageSettings()">Edit Profile</button>
-  </div>
-  <br><br><br>
-  <div class="right-column">
-    <h2>Personal Information</h2>
-    <div class="line"></div> <!-- Línea -->
-    <br><br>
-    <h2>Full Name:</h2>
-    <div class="info-box"><p>{{Profile.FullName}}</p><br></div><br>
-    <h2>Biography:</h2>
-    <div class="info-box"><p>{{Profile.Bio}}</p><br></div><br>
-    <h2>Location:</h2>
-    <div class="info-box"><p>{{Profile.Location}}</p><br></div><br>
-    <h2>Website:</h2>
-    <div class="info-box"><p>{{Profile.Website}}</p><br></div><br>
-    <h2>Github:</h2>
-    <div class="info-box"><p>{{Profile.Github}}</p><br></div><br>
+<div class="main-container">
+  <app-sidebar></app-sidebar>
+  <div class="profile-card">
+    <div class="profile-details">
+      <div class="left-column">
+        <img src="{{ profile?.ProfilePictureUrl }}" class="profile-picture">
+      </div>
+      <div class="right-column">
+        <h2>{{ profile?.FullName }}</h2>
+        <p>{{ profile?.Bio }}</p>
+        <p><strong>Location: </strong> {{ profile?.Location }}</p>
+        <p><strong>Website: </strong> <a href=" {{ profile?.Website }}" target="_blank">{{ profile?.Website }}</a></p>
+        <p><strong>Github: </strong> <a href=" {{ profile?.Github }}" target="_blank">{{ profile?.Github }}</a></p>
+        <button *ngIf="!profile" (click)="addProfile()">Añadir Perfil</button>
+        <button *ngIf="profile" (click)="editProfile()">Editar Perfil</button>
+      </div>
+    </div>
   </div>
 </div>

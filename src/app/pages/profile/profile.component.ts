@@ -1,44 +1,54 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
 import { HashdevDataService } from "../../services/hashdev-data.service";
-import { Profile } from '../../models/profile.model'; // Asegúrate de importar el modelo
+import { Profile } from "../../models/profile.model";
+import { Router } from '@angular/router';
+import { SidebarComponent } from "../sidebar/sidebar.component";
+import {NgIf} from "@angular/common";
 
 @Component({
-  selector: 'app-profile-client',
-  templateUrl: './profile-client.component.html',
-  styleUrls: ['./profile-client.component.css'],
-  standalone: true
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  standalone: true,
+  imports: [
+    SidebarComponent,
+    NgIf
+  ],
+  styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  Profile: Profile | null = null;
+  profile: Profile | null = null;
 
-  constructor(private api: HashdevDataService, private activatedRoute: ActivatedRoute, private router: Router) {
-    this.activatedRoute.params.subscribe(params => {
-      this.getProfile(params['id']);
-    });
-  }
+  constructor(private hashdevDataService: HashdevDataService, private router: Router) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // Obtener ID de usuario desde localStorage
+    const userId = localStorage.getItem('UserId');
 
-  getProfile(id: string) {
-    this.api.getProfileByUserId(id).subscribe(
-      (res: Profile | null) => {
-        if (res) {
-          console.log("Profile detail:", res);
-          this.Profile = res;
+    if (userId) {
+      // Obtener perfil del usuario por su ID
+      this.hashdevDataService.getProfileByUserId(userId).subscribe(
+        (profile: Profile | null) => {
+          if (profile) {
+            this.profile = profile;
+          } else {
+            console.warn('Perfil no encontrado para el usuario con id:', userId);
+          }
+        },
+        error => {
+          console.error('Error al obtener perfil:', error);
         }
-      },
-      err => {
-        console.log("Error:", err);
-      }
-    );
-  }
-
-  pageSettings() {
-    const UserId = this.Profile?.UserId;
-    if (UserId) {
-      this.router.navigateByUrl(`/client-settings/${UserId}`);
+      );
+    } else {
+      console.error('ID de usuario no encontrado en localStorage');
     }
   }
+
+  addProfile() {
+    this.router.navigate(['/profile-settings']);
+  }
+
+  editProfile() {
+    this.router.navigate(['/profile-settings']);
+  }
 }
+

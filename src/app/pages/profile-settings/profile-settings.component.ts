@@ -132,6 +132,6 @@ export class ProfileSettingsComponent implements OnInit {
   }
 
   pageSettings(): void {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/profile']);
   }
 }

@@ -1,27 +1,68 @@
-.profile-container {
+.main-container {
   display: flex;
-  margin-left: 250px; /* Asegura que el contenido esté al lado del sidebar */
+  align-items: center;
+  justify-content: flex-end;
+  height: 100vh;
   padding: 20px;
 }
 
-.left-column {
+.profile-card {
+  max-width: 600px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 200px;
+}
+
+.profile-card:hover {
+  transform: scale(1.05);
+}
+
+.profile-details {
+  display: flex;
+  width: 100%;
+}
+
+.profile-details .left-column {
+  margin-right: 20px;
+}
+
+.profile-details .right-column {
   flex: 1;
-  padding: 20px;
 }
 
-.right-column {
-  flex: 2;
-  padding: 20px;
+.profile-picture {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
-.info-box {
-  background-color: #333;
-  padding: 10px;
-  border-radius: 5px;
+h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+p {
+  margin-bottom: 8px;
+}
+
+button {
+  background-color: #007bff;
   color: white;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.1s ease;
 }
 
-.line {
-  height: 2px;
-  background-color: white;
+button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
 }
