@@ -9,7 +9,7 @@
 }
 
 .container-back {
-  padding: 20px; /* Reducido de 150px a 20px */
+  padding: 20px;
   width: calc(100% - 283px);
 }
 
