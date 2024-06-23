@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HashdevDataService } from '../../../services/hashdev-data.service';
 import { Events } from '../../../models/events.model';
-import { Payment } from '../../../models/payment.model';
 import {SidebarComponent} from "../../sidebar/sidebar.component";
 import {NgIf} from "@angular/common";
 import {FormsModule} from "@angular/forms";
@@ -44,7 +43,6 @@ export class EventosIdComponent implements OnInit {
     const currency = (document.getElementById('Currency') as HTMLInputElement).value;
     const cvv = (document.getElementById('CardCvv') as HTMLInputElement).value;
 
-    // Crear objeto Payment
     const payment: { CardNumber: string; Amount: string; Currency: string; CardCVV: string } = {
       Amount: this.amount,
       Currency: currency,
@@ -52,7 +50,6 @@ export class EventosIdComponent implements OnInit {
       CardCVV: cvv
     };
 
-    // Guardar el pago
     this.dataService.savePayment(payment).subscribe(result => {
       console.log('Pago registrado exitosamente:', result);
     }, error => {
