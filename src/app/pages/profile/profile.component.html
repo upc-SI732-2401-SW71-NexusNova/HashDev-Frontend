@@ -9,8 +9,14 @@
         <h2>{{ profile?.FullName }}</h2>
         <p>{{ profile?.Bio }}</p>
         <p><strong>Location: </strong> {{ profile?.Location }}</p>
-        <p><strong>Website: </strong> <a href=" {{ profile?.Website }}" target="_blank">{{ profile?.Website }}</a></p>
-        <p><strong>Github: </strong> <a href=" {{ profile?.Github }}" target="_blank">{{ profile?.Github }}</a></p>
+        <p *ngIf="profile?.Website">
+          <strong>Website: </strong>
+          <a [href]="profile?.Website" target="_blank" rel="noopener noreferrer">{{ profile?.Website }}</a>
+        </p>
+        <p *ngIf="profile?.Github">
+          <strong>Github: </strong>
+          <a [href]="profile?.Github" target="_blank" rel="noopener noreferrer">{{ profile?.Github }}</a>
+        </p>
         <button *ngIf="!profile" (click)="addProfile()">Añadir Perfil</button>
         <button *ngIf="profile" (click)="editProfile()">Editar Perfil</button>
       </div>
