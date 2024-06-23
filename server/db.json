@@ -43,6 +43,7 @@
       "name": "Mobile World Congress",
       "image": "https://e00-expansion.uecdn.es/assets/multimedia/imagenes/2021/06/24/16245264312065.jpg",
       "description": "El congreso más grande del mundo centrado en la industria móvil, donde se presentan nuevas tecnologías móviles, dispositivos y tendencias en telecomunicaciones.",
+      "price": "$180.00",
       "date": "2024-08-22",
       "time": "08:00",
       "location": "Washington",
@@ -53,6 +54,7 @@
       "name": "Apple Worldwide Developers Conference (WWDC)",
       "image": "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iN1cI23wn_pI/v0/-1x-1.jpg",
       "description": "Evento anual de Apple dirigido a desarrolladores, donde se presentan las últimas actualizaciones de software y hardware de la compañía.",
+      "price": "$90.00",
       "date": "2024-11-25",
       "time": "12:00",
       "location": "Virtual",
@@ -63,6 +65,7 @@
       "name": "Google I/O",
       "image": "https://media.wired.com/photos/645bfe5e6279e36472844470/master/w_2560%2Cc_limit/GettyImages-1488908065.jpg",
       "description": "Conferencia anual de desarrolladores de Google donde se anuncian nuevas tecnologías, productos y actualizaciones de software de Google.",
+      "price": "$00.00",
       "date": "2024-11-13",
       "time": "08:00",
       "location": "Virtual",
@@ -73,6 +76,7 @@
       "name": "Microsoft Build",
       "image": "https://news.microsoft.com/wp-content/uploads/prod/sites/41/2020/05/Build-OMB-image.jpg",
       "description": "Evento anual de desarrolladores de Microsoft donde se presentan nuevas herramientas, tecnologías y plataformas de la compañía.",
+      "price": "$00.00",
       "date": "2024-08-22",
       "time": "08:00",
       "location": "New York",
@@ -83,6 +87,7 @@
       "name": "TechCrunch Disrupt",
       "image": "https://infonegocios.info/content/images/2022/07/21/175439/conversions/800x453-uruguay-en-disrupt-2020-medium-size.jpg",
       "description": "Evento anual organizado por TechCrunch que reúne a startups, emprendedores y líderes de la industria tecnológica para presentar y discutir las últimas tendencias y innovaciones.",
+      "price": "$25.00",
       "date": "2024-09-18",
       "time": "10:00",
       "location": "Virtual",
@@ -93,6 +98,7 @@
       "name": "GitHub Universe",
       "image": "https://www.pcma.org/wp-content/uploads/2019/03/GitHub-Palace-1.jpg",
       "description": "Conferencia anual de GitHub donde se discuten las últimas actualizaciones de la plataforma, tendencias en desarrollo de software y colaboración en código abierto.",
+      "price": "$80.00",
       "date": "2024-10-24",
       "time": "10:00",
       "location": "Virtual",
@@ -103,6 +109,7 @@
       "name": "NVIDIA GTC (GPU Technology Conference)",
       "image": "https://cdn.prod.website-files.com/656a6f5ca4824808211181c5/6605b17f6c70006f867ebbaf_NVIDIA-GTC-2024.jpg",
       "description": "Conferencia anual de NVIDIA centrada en la innovación en computación visual y tecnologías de GPU, incluyendo inteligencia artificial, gráficos y ciencia de datos.",
+      "price": "$20.00",
       "date": "2024-06-24",
       "time": "19:00",
       "location": "Virtual",
@@ -113,6 +120,7 @@
       "name": "European Blockchain Convention",
       "image": "https://eblockchainconvention.com/wp-content/uploads/2024/02/53297499402_339a3d64f5_k.jpg",
       "description": "La Convención Europea de Blockchain es un evento en línea de cuatro días lleno de conferencias inspiradoras, paneles de discusión, talleres, reuniones individuales y redes de alto nivel.",
+      "price": "$30.00",
       "date": "2024-06-25",
       "time": "09:00",
       "location": "Barcelona",
@@ -123,10 +131,20 @@
       "name": "IBM Think",
       "image": "https://higherlogicdownload.s3.amazonaws.com/IMWUC/UploadedImages/V1exfruRyOd95pql6o3Z_ibm-think-2023-arvind-krishna-L.jpeg",
       "description": "Evento anual de IBM que reúne a clientes, partners y líderes de la industria para explorar las últimas tecnologías en inteligencia artificial, nube, blockchain y seguridad.",
+      "price": "$150.00",
       "date": "2024-06-26",
       "time": "12:00",
       "location": "Virtual",
       "UserId": "247b"
+    }
+  ],
+  "Payment": [
+    {
+      "id": "1e66",
+      "Amount": "$30.00",
+      "Currency": "Visa",
+      "CardNumber": "12345678901",
+      "CardCVV": "123"
     }
   ]
 }

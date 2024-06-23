@@ -6,6 +6,7 @@ import { ProfileSettingsComponent } from "./pages/profile-settings/profile-setti
 import { HomeComponent } from "./pages/home/home.component";
 import { EventosComponent } from "./pages/eventos/eventos.component";
 import { NewEventosComponent } from "./pages/eventos/neweventos/new-eventos.component";
+import {EventosIdComponent} from "./pages/eventos/eventosid/eventos-id.component";
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -14,7 +15,8 @@ export const routes: Routes = [
   { path: 'profile-settings', component: ProfileSettingsComponent },
   { path: 'home', component: HomeComponent },
   { path: 'eventos', component: EventosComponent },
-  { path: 'neweventos', component: NewEventosComponent }
+  { path: 'neweventos', component: NewEventosComponent },
+  { path: 'eventos/:id', component: EventosIdComponent }
 ];
 
 @NgModule({

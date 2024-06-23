@@ -1,0 +1,45 @@
+.main-container {
+  display: flex;
+  height: 100vh;
+  margin-left: 280px; /* Mueve el contenido principal al costado del sidebar */
+}
+
+.content {
+  flex: 1; /* Para que el contenido ocupe el espacio restante */
+  padding: 20px;
+}
+
+.card {
+  margin-bottom: 20px;
+  width: 100%;
+  display: inline-block;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+  max-width: 100%;
+  height: auto;
+}
+
+.event-details {
+  flex: 1;
+}
+
+.registration-form {
+  width: 30%; /* Ancho del formulario de registro */
+  margin-left: 20px; /* Espacio entre el card y el formulario */
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.registration-form h3 {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.btn-primary {
+  width: 100%; /* Botón de registro ocupa todo el ancho del formulario */
+}

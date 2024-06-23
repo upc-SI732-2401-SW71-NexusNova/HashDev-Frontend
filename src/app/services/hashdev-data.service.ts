@@ -5,7 +5,8 @@ import { catchError, retry, map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { User } from '../models/user.model';
 import { Profile } from '../models/profile.model';
-import {Events} from "../models/events.model"; // Asegúrate de importar el modelo
+import {Events} from "../models/events.model";
+import {Payment} from "../models/payment.model"; // Asegúrate de importar el modelo
 
 @Injectable({
   providedIn: 'root'
@@ -82,6 +83,12 @@ export class HashdevDataService {
 
   createEvent(event: Omit<Events, "id">): Observable<Events> {
     return this.http.post<Events>(`${this.base_url}/Events`, event, this.httpOptions).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  savePayment(payment: { CardNumber: string; Amount: string; Currency: string; CardCVV: string }): Observable<any> {
+    return this.http.post(`${this.base_url}/Payment`, payment, this.httpOptions).pipe(
       catchError(this.handleError)
     );
   }

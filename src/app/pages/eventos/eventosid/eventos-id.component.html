@@ -1,0 +1,43 @@
+<div class="main-container">
+  <app-sidebar></app-sidebar>
+  <div class="content">
+    <div *ngIf="evento" class="card event-details">
+      <img [src]="evento.image" class="card-img-top" alt="Evento">
+      <div class="card-body">
+        <h5 class="card-title">{{ evento.name }}</h5>
+        <p class="card-text">{{ evento.description }}</p>
+        <p><strong>Precio:</strong> {{ evento.price }}</p>
+        <p><strong>Fecha:</strong> {{ evento.date }}</p>
+        <p><strong>Hora:</strong> {{ evento.time }}</p>
+        <p><strong>Lugar:</strong> {{ evento.location }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="registration-form">
+    <h3>Registrarse al evento</h3>
+    <form (ngSubmit)="submitRegistrationForm()">
+      <div class="form-group">
+        <label for="Nombres">Nombres:</label>
+        <input type="text" class="form-control" id="Nombres" name="Nombres" required>
+      </div>
+      <div class="form-group">
+        <label for="Apellidos">Apellidos:</label>
+        <input type="text" class="form-control" id="Apellidos" name="Apellidos" required>
+      </div>
+      <div class="form-group">
+        <label for="CardNumber">Número de tarjeta:</label>
+        <input type="text" class="form-control" id="CardNumber" name="CardNumber" required>
+      </div>
+      <div class="form-group">
+        <label for="Currency">Tipo de Tarjeta (Visa o MasterCard):</label>
+        <input type="text" class="form-control" id="Currency" name="Currency" required>
+      </div>
+      <div class="form-group">
+        <label for="CardCvv">CVV:</label>
+        <input type="text" class="form-control" id="CardCvv" name="CardCvv" required>
+      </div>
+      <input type="hidden" id="Amount" name="Amount" [value]="evento?.price">
+      <button type="submit" class="btn btn-primary">Registrarse</button>
+    </form>
+  </div>
+</div>

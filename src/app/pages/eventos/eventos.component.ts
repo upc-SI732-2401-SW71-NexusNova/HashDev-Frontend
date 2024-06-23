@@ -3,6 +3,7 @@ import {SidebarComponent} from "../sidebar/sidebar.component";
 import {HashdevDataService} from "../../services/hashdev-data.service";
 import {Events} from "../../models/events.model";
 import {CommonModule} from "@angular/common";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-eventos',
@@ -10,7 +11,8 @@ import {CommonModule} from "@angular/common";
   standalone: true,
   imports: [
     SidebarComponent,
-    CommonModule
+    CommonModule,
+    RouterLink
   ],
   styleUrls: ['./eventos.component.css']
 })

@@ -20,6 +20,7 @@ export class NewEventosComponent {
     name: '',
     image: '',
     description: '',
+    price: '',
     date: '',
     time: '',
     location: '',
