@@ -5,6 +5,7 @@ import { HashdevDataService } from "../../services/hashdev-data.service";
 import { Profile } from "../../models/profile.model";
 import {SidebarComponent} from "../sidebar/sidebar.component";
 
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile-settings.component.html',
@@ -17,6 +18,7 @@ export class ProfileSettingsComponent implements OnInit {
   errorMessage: string = '';
   UserId: string = '';
   profileId: string = '';
+  snackbarMessage: string = '';
 
   constructor(private fb: FormBuilder, private api: HashdevDataService, private router: Router) {
     this.UserSettingsForm = this.fb.group({
@@ -94,9 +96,14 @@ export class ProfileSettingsComponent implements OnInit {
 
       this.api.updateUser(UserData).subscribe(
         response => {
+          this.showSnackbar('User updated successfully');
+          setTimeout(() => {
+            this.pageSettings();
+          }, 3000);
           console.log('User updated successfully', response);
         },
         error => {
+          this.showSnackbar('Error updating user credentials');
           this.errorMessage = 'Error updating user credentials';
           console.error(error);
         }
@@ -106,9 +113,11 @@ export class ProfileSettingsComponent implements OnInit {
         // Update existing profile
         this.api.updateProfile(ProfileData).subscribe(
           response => {
+            this.showSnackbar('Profile updated successfully');
             console.log('Profile updated successfully', response);
           },
           error => {
+            this.showSnackbar('Error updating personal information');
             this.errorMessage = 'Error updating personal information';
             console.error(error);
           }
@@ -133,5 +142,16 @@ export class ProfileSettingsComponent implements OnInit {
 
   pageSettings(): void {
     this.router.navigate(['/profile']);
+  }
+
+  showSnackbar(message: string): void {
+    this.snackbarMessage = message;
+    const snackbar = document.getElementById('snackbar');
+    if (snackbar) {
+      snackbar.className = 'snackbar show';
+      setTimeout(() => {
+        snackbar.className = snackbar.className.replace('show', '');
+      }, 3000);
+    }
   }
 }
