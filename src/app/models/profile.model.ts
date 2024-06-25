@@ -1,10 +1,10 @@
 export interface Profile{
-  Id: string,
+  Id: number,
   FullName: string,
   Bio: string,
   ProfilePictureUrl: string,
   Location: string,
   Website: string,
   Github: string,
-  UserId: string,
+  UserId: number,
 }

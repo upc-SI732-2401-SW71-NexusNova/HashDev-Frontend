@@ -1,7 +1,7 @@
 export interface Payment{
-  Id: string,
+  Id: number,
   Amount: string,
   Currency: string,
-  CardNumber: string,
-  CardCVV: string,
+  CardNumber: number,
+  CardCVV: number,
 }

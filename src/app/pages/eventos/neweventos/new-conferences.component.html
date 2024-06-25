@@ -7,31 +7,31 @@
         <form (ngSubmit)="onSubmit()">
           <div class="form-group">
             <label for="name">Nombre del Evento</label>
-            <input type="text" id="name" [(ngModel)]="newEvent.name" name="name" required>
+            <input type="text" id="name" [(ngModel)]="newConference.name" name="name" required>
           </div>
           <div class="form-group">
             <label for="image">URL de la Imagen</label>
-            <input type="text" id="image" [(ngModel)]="newEvent.image" name="image" required>
+            <input type="text" id="image" [(ngModel)]="newConference.image" name="image" required>
           </div>
           <div class="form-group">
             <label for="description">Descripción</label>
-            <textarea id="description" [(ngModel)]="newEvent.description" name="description" required></textarea>
+            <textarea id="description" [(ngModel)]="newConference.description" name="description" required></textarea>
           </div>
           <div class="form-group">
             <label for="description">Price</label>
-            <input type="text" id="price" [(ngModel)]="newEvent.price" name="price" required>
+            <input type="text" id="price" [(ngModel)]="newConference.price" name="price" required>
           </div>
           <div class="form-group">
             <label for="date">Fecha</label>
-            <input type="date" id="date" [(ngModel)]="newEvent.date" name="date" required>
+            <input type="date" id="date" [(ngModel)]="newConference.date" name="date" required>
           </div>
           <div class="form-group">
             <label for="time">Hora</label>
-            <input type="time" id="time" [(ngModel)]="newEvent.time" name="time" required>
+            <input type="time" id="time" [(ngModel)]="newConference.time" name="time" required>
           </div>
           <div class="form-group">
             <label for="location">Lugar</label>
-            <input type="text" id="location" [(ngModel)]="newEvent.location" name="location" required>
+            <input type="text" id="location" [(ngModel)]="newConference.location" name="location" required>
           </div>
           <button type="submit">Crear Evento</button>
         </form>

@@ -3,7 +3,8 @@ import { HashdevDataService } from "../../services/hashdev-data.service";
 import { Profile } from "../../models/profile.model";
 import { Router } from '@angular/router';
 import { SidebarComponent } from "../sidebar/sidebar.component";
-import {NgIf} from "@angular/common";
+import { NgIf } from "@angular/common";
+import {AuthGuard} from "../auth/auth.guard";
 
 @Component({
   selector: 'app-profile',
@@ -18,29 +19,23 @@ import {NgIf} from "@angular/common";
 export class ProfileComponent implements OnInit {
   profile: Profile | null = null;
 
-  constructor(private hashdevDataService: HashdevDataService, private router: Router) { }
+  constructor(private hashdevDataService: HashdevDataService, private router: Router, private authService: AuthGuard) {}
 
-  ngOnInit(): void {
-    // Obtener ID de usuario desde localStorage
-    const userId = localStorage.getItem('UserId');
+  ngOnInit() {
+    this.loadUserProfile();
+  }
 
-    if (userId) {
-      // Obtener perfil del usuario por su ID
-      this.hashdevDataService.getProfileByUserId(userId).subscribe(
-        (profile: Profile | null) => {
-          if (profile) {
-            this.profile = profile;
-          } else {
-            console.warn('Perfil no encontrado para el usuario con id:', userId);
-          }
-        },
-        error => {
-          console.error('Error al obtener perfil:', error);
-        }
-      );
-    } else {
-      console.error('ID de usuario no encontrado en localStorage');
-    }
+  loadUserProfile(): void {
+    const userId = this.authService.getCurrentUserId();
+    console.log('Cargando perfil para el usuario con ID:', userId);
+    this.hashdevDataService.getProfileByUserId(userId).subscribe(
+      (profile) => {
+        this.profile = profile;
+      },
+      (error) => {
+        console.error('Error al cargar el perfil del usuario:', error);
+      }
+    );
   }
 
   addProfile() {
@@ -51,4 +46,3 @@ export class ProfileComponent implements OnInit {
     this.router.navigate(['/profile-settings']);
   }
 }
-

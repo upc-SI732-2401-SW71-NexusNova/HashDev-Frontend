@@ -1,15 +1,15 @@
 <div class="main-container">
   <app-sidebar></app-sidebar>
   <div class="content">
-    <div *ngIf="evento" class="card event-details">
-      <img [src]="evento.image" class="card-img-top" alt="Evento">
+    <div *ngIf="conferences" class="card event-details">
+      <img [src]="conferences.image" class="card-img-top" alt="Evento">
       <div class="card-body">
-        <h5 class="card-title">{{ evento.name }}</h5>
-        <p class="card-text">{{ evento.description }}</p>
-        <p><strong>Precio:</strong> {{ evento.price }}</p>
-        <p><strong>Fecha:</strong> {{ evento.date }}</p>
-        <p><strong>Hora:</strong> {{ evento.time }}</p>
-        <p><strong>Lugar:</strong> {{ evento.location }}</p>
+        <h5 class="card-title">{{ conferences.name }}</h5>
+        <p class="card-text">{{ conferences.description }}</p>
+        <p><strong>Precio:</strong> {{ conferences.price }}</p>
+        <p><strong>Fecha:</strong> {{ conferences.date }}</p>
+        <p><strong>Hora:</strong> {{ conferences.time }}</p>
+        <p><strong>Lugar:</strong> {{ conferences.location }}</p>
       </div>
     </div>
   </div>
@@ -37,7 +37,7 @@
         <label for="CardCvv">CVV:</label>
         <input type="text" class="form-control" id="CardCvv" name="CardCvv" required>
       </div>
-      <input type="hidden" id="Amount" name="Amount" [value]="evento?.price">
+      <input type="hidden" id="Amount" name="Amount" [value]="conferences?.price">
       <button type="submit" class="btn btn-primary">Registrarse</button>
     </form>
   </div>
@@ -45,11 +45,11 @@
     <h3>Detalles del registro</h3>
     <p><strong>Nombres:</strong> {{ registrationDetails?.Nombres }}</p>
     <p><strong>Apellidos:</strong> {{ registrationDetails?.Apellidos }}</p>
-    <p><strong>Evento:</strong> {{ evento?.name }}</p>
-    <p><strong>Precio:</strong> {{ evento?.price }}</p>
-    <p><strong>Fecha:</strong> {{ evento?.date }}</p>
-    <p><strong>Hora:</strong> {{ evento?.time }}</p>
-    <p><strong>Lugar:</strong> {{ evento?.location }}</p>
+    <p><strong>Evento:</strong> {{ conferences?.name }}</p>
+    <p><strong>Precio:</strong> {{ conferences?.price }}</p>
+    <p><strong>Fecha:</strong> {{ conferences?.date }}</p>
+    <p><strong>Hora:</strong> {{ conferences?.time }}</p>
+    <p><strong>Lugar:</strong> {{ conferences?.location }}</p>
     <button class="btn btn-secondary no-print" (click)="printTicket()">Imprimir boleta</button>
   </div>
 </div>

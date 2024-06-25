@@ -5,23 +5,6 @@
     <div class="user-info">
       <form id="settings" action="" method="post" [formGroup]="UserSettingsForm" (submit)="onSubmit()" class="profile-form">
         <h2>Editar datos de Perfil</h2>
-
-        <div class="form-section">
-          <h3>Credenciales:</h3>
-          <div class="form-group">
-            <input type="text" placeholder="Username" formControlName="Username" id="Username" required>
-          </div>
-          <div class="form-group">
-            <input type="email" placeholder="Email" formControlName="Email" id="Email" required>
-          </div>
-          <div class="form-group">
-            <input type="password" placeholder="Contraseña" formControlName="Password" id="Password" required> <!--change to text?-->
-          </div>
-          <div class="form-group">
-            <input type="password" placeholder="Repetir Contraseña" formControlName="confirmarpassword" id="confirmarpassword" required>
-          </div>
-        </div>
-
         <div class="form-section">
           <h3>Personal Information:</h3>
           <div class="form-group">

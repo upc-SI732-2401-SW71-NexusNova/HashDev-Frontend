@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HashdevDataService } from '../../../services/hashdev-data.service';
-import { Events } from '../../../models/events.model';
 import { SidebarComponent } from "../../sidebar/sidebar.component";
 import { NgIf } from "@angular/common";
 import { FormsModule } from "@angular/forms";
+import {Conference} from "../../../models/conference.model";
 
 @Component({
-  selector: 'app-eventos-id',
-  templateUrl: './eventos-id.component.html',
+  selector: 'app-conferences-id',
+  templateUrl: './conferences-id.component.html',
   standalone: true,
   imports: [
     SidebarComponent,
     NgIf,
     FormsModule
   ],
-  styleUrls: ['./eventos-id.component.css']
+  styleUrls: ['./conferences-id.component.css']
 })
-export class EventosIdComponent implements OnInit {
-  evento: Events | undefined;
+export class ConferencesIdComponent implements OnInit {
+  conferences: Conference | undefined;
   isRegistered: boolean = false;
   registrationDetails: { Nombres: string, Apellidos: string } | null = null;
 
@@ -29,12 +29,12 @@ export class EventosIdComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      const eventId = params['id'];
-      this.dataService.getEventsById(eventId).subscribe(event => {
-        this.evento = event;
+      const conferenceId = params['id'];
+      this.dataService.getConferencesById(conferenceId).subscribe(conference => {
+        this.conferences = conference;
 
         const registration = this.dataService.getRegistration();
-        if (registration && registration.eventId === eventId) {
+        if (registration && registration.conferenceId === conferenceId) {
           this.isRegistered = true;
           this.registrationDetails = {
             Nombres: registration.Nombres,
@@ -48,12 +48,12 @@ export class EventosIdComponent implements OnInit {
   submitRegistrationForm(): void {
     const nombres = (document.getElementById('Nombres') as HTMLInputElement).value;
     const apellidos = (document.getElementById('Apellidos') as HTMLInputElement).value;
-    const cardNumber = (document.getElementById('CardNumber') as HTMLInputElement).value;
+    const cardNumber = Number((document.getElementById('CardNumber') as HTMLInputElement).value);
     const currency = (document.getElementById('Currency') as HTMLInputElement).value;
-    const cvv = (document.getElementById('CardCvv') as HTMLInputElement).value;
+    const cvv = Number((document.getElementById('CardCvv') as HTMLInputElement).value);
 
     const payment = {
-      Amount: this.evento?.price,
+      Amount: this.conferences?.price,
       Currency: currency,
       CardNumber: cardNumber,
       CardCVV: cvv
@@ -64,7 +64,7 @@ export class EventosIdComponent implements OnInit {
       this.dataService.saveRegistration({
         Nombres: nombres,
         Apellidos: apellidos,
-        eventId: this.evento?.id
+        conferenceId: this.conferences?.id
       });
       this.isRegistered = true;
       this.registrationDetails = { Nombres: nombres, Apellidos: apellidos };

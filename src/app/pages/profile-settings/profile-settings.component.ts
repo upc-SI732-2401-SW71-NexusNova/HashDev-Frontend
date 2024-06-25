@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 import { HashdevDataService } from "../../services/hashdev-data.service";
-import { Profile } from "../../models/profile.model";
-import {SidebarComponent} from "../sidebar/sidebar.component";
-
+import { SidebarComponent } from "../sidebar/sidebar.component";
 
 @Component({
-  selector: 'app-profile',
+  selector: 'app-profile-settings',
   templateUrl: './profile-settings.component.html',
   styleUrls: ['./profile-settings.component.css'],
   standalone: true,
@@ -16,16 +14,16 @@ import {SidebarComponent} from "../sidebar/sidebar.component";
 export class ProfileSettingsComponent implements OnInit {
   UserSettingsForm: FormGroup;
   errorMessage: string = '';
-  UserId: string = '';
-  profileId: string = '';
+  UserId: number = 0;
+  profileId: number = 0;
   snackbarMessage: string = '';
 
-  constructor(private fb: FormBuilder, private api: HashdevDataService, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private api: HashdevDataService,
+    private router: Router
+  ) {
     this.UserSettingsForm = this.fb.group({
-      Username: ['', Validators.required],
-      Email: ['', [Validators.required, Validators.email]],
-      Password: ['', Validators.required],
-      confirmarpassword: ['', Validators.required],
       FullName: ['', Validators.required],
       Bio: ['', Validators.required],
       Location: ['', Validators.required],
@@ -45,8 +43,13 @@ export class ProfileSettingsComponent implements OnInit {
     }
   }
 
-  getUserIdFromSession(): string {
-    return localStorage.getItem('UserId') || '';
+  getUserIdFromSession(): number {
+    const userIdString = localStorage.getItem('UserId');
+    if (!userIdString) {
+      console.error('UserId no encontrado en localStorage');
+      return 0;
+    }
+    return Number(userIdString);
   }
 
   loadUserProfile(): void {
@@ -63,28 +66,21 @@ export class ProfileSettingsComponent implements OnInit {
             ProfilePictureUrl: profile.ProfilePictureUrl
           });
         } else {
-          this.profileId = ''; // No profile found, set profileId to empty string
+          this.profileId = 0;
         }
       },
       error => {
-        this.errorMessage = 'Error loading user profile';
+        this.errorMessage = 'Error cargando el perfil del usuario';
         console.error(error);
       }
     );
   }
 
   onSubmit(): void {
+    this.errorMessage = '';
     const formData = this.UserSettingsForm.value;
-    if (this.UserSettingsForm.valid) {
-      const UserData = {
-        id: this.UserId,
-        Username: formData.Username,
-        Email: formData.Email,
-        Password: formData.Password
-      };
-
-      const ProfileData: Profile = {
-        Id: this.profileId || '', // Use existing profile ID or empty string
+    if(this.errorMessage == ''){
+      const UserSettingsForm = {
         FullName: formData.FullName,
         Bio: formData.Bio,
         Location: formData.Location,
@@ -94,49 +90,33 @@ export class ProfileSettingsComponent implements OnInit {
         UserId: this.UserId
       };
 
-      this.api.updateUser(UserData).subscribe(
-        response => {
-          this.showSnackbar('User updated successfully');
-          setTimeout(() => {
-            this.pageSettings();
-          }, 3000);
-          console.log('User updated successfully', response);
-        },
-        error => {
-          this.showSnackbar('Error updating user credentials');
-          this.errorMessage = 'Error updating user credentials';
-          console.error(error);
-        }
-      );
-
-      if (this.profileId && this.profileId.trim() !== '') {
-        // Update existing profile
-        this.api.updateProfile(ProfileData).subscribe(
+      if (this.profileId && this.profileId !== 0) {
+        this.api.updateProfile(this.UserId, UserSettingsForm).subscribe(
           response => {
-            this.showSnackbar('Profile updated successfully');
+            this.profileId = response.Id;
+            this.showSnackbar('Perfil actualizado exitosamente');
             console.log('Profile updated successfully', response);
           },
           error => {
-            this.showSnackbar('Error updating personal information');
-            this.errorMessage = 'Error updating personal information';
+            this.errorMessage = 'Error actualizando la información personal';
             console.error(error);
           }
         );
       } else {
-        // Create new profile
-        this.api.addProfile(ProfileData).subscribe(
+        this.api.addProfile(UserSettingsForm).subscribe(
           response => {
-            this.profileId = response.id; // Update profileId after creating a new profile
+            this.profileId = response.Id;
+            this.showSnackbar('Perfil creado exitosamente');
             console.log('Profile added successfully', response);
           },
           error => {
-            this.errorMessage = 'Error updating personal information';
+            this.errorMessage = 'Error creando el perfil';
             console.error(error);
           }
         );
       }
     } else {
-      this.errorMessage = 'Form is not valid';
+      this.errorMessage = 'El formulario no es válido';
     }
   }
 

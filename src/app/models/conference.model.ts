@@ -1,4 +1,4 @@
-export interface Events{
+export interface Conference{
   id: number,
   name: string,
   image: string,
@@ -7,5 +7,5 @@ export interface Events{
   date: string,
   time: string,
   location: string,
-  UserId: string,
+  UserId: number,
 }

@@ -1,29 +1,5 @@
 {
   "User": [
-    {
-      "id": "247b",
-      "Username": "Dms",
-      "Email": "damarists@gmail.com",
-      "Password": "123456"
-    },
-    {
-      "id": "7aa8",
-      "Username": "Admin",
-      "Email": "admin@hashdev.pe",
-      "Password": "123456"
-    },
-    {
-      "id": "5ea9",
-      "Username": "Js12",
-      "Email": "juansuarez@gmail.com",
-      "Password": "123456"
-    },
-    {
-      "id": "e3bb",
-      "Username": "LuisM",
-      "Email": "luismagallanes@gmail.com",
-      "Password": "123456"
-    }
   ],
   "Profile": [
     {
@@ -37,7 +13,7 @@
       "UserId": "247b"
     }
   ],
-  "Events": [
+  "Conference": [
     {
       "id": "1",
       "name": "Mobile World Congress",
@@ -116,7 +92,7 @@
       "UserId": "247b"
     },
     {
-      "id": "49de",
+      "id": "00f6",
       "name": "European Blockchain Convention",
       "image": "https://eblockchainconvention.com/wp-content/uploads/2024/02/53297499402_339a3d64f5_k.jpg",
       "description": "La Convención Europea de Blockchain es un evento en línea de cuatro días lleno de conferencias inspiradoras, paneles de discusión, talleres, reuniones individuales y redes de alto nivel.",
@@ -124,27 +100,8 @@
       "date": "2024-06-25",
       "time": "09:00",
       "location": "Barcelona",
-      "UserId": "247b"
-    },
-    {
-      "id": "a548",
-      "name": "IBM Think",
-      "image": "https://higherlogicdownload.s3.amazonaws.com/IMWUC/UploadedImages/V1exfruRyOd95pql6o3Z_ibm-think-2023-arvind-krishna-L.jpeg",
-      "description": "Evento anual de IBM que reúne a clientes, partners y líderes de la industria para explorar las últimas tecnologías en inteligencia artificial, nube, blockchain y seguridad.",
-      "price": "$150.00",
-      "date": "2024-06-26",
-      "time": "12:00",
-      "location": "Virtual",
-      "UserId": "247b"
+      "UserId": null
     }
   ],
-  "Payment": [
-    {
-      "id": "1e1e",
-      "Amount": "$90.00",
-      "Currency": "MasterCard",
-      "CardNumber": "12345678901",
-      "CardCVV": "123"
-    }
-  ]
+  "Payment": []
 }

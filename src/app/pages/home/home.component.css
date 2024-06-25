@@ -14,13 +14,16 @@
 
 .content {
   flex-grow: 1;
-  background-color: #000;
   color: white;
   padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow-y: auto; /* Permite hacer scroll vertical si el contenido es largo */
+}
+
+.header{
+  color: black;
 }
 
 /* Estilos para la publicación */

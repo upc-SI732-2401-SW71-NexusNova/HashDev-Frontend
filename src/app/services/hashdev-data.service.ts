@@ -5,7 +5,7 @@ import { catchError, retry, map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { User } from '../models/user.model';
 import { Profile } from '../models/profile.model';
-import {Events} from "../models/events.model";
+import { Conference } from "../models/conference.model";
 
 @Injectable({
   providedIn: 'root'
@@ -31,77 +31,95 @@ export class HashdevDataService {
   }
 
   getAllUser(): Observable<User[]> {
-    return this.http.get<User[]>(this.base_url + "/User").pipe(retry(2), catchError(this.handleError));
+    return this.http.get<User[]>(this.base_url + "/User").pipe(
+      retry(2),
+      catchError(this.handleError)
+    );
   }
 
-  createUser(data: any): Observable<any> {
-    return this.http.post<User>(`${this.base_url}/User`, data, this.httpOptions);
+  createUser(data: Omit<User, 'Id'>): Observable<User> {
+    return this.http.post<User>(`${this.base_url}/User/register`, data, this.httpOptions).pipe(
+      map(user => {
+        user.Id = +user.Id;
+        return user;
+      }),
+      catchError(this.handleError)
+    );
   }
 
   getUserForLogin(Email: string, Password: string): Observable<any> {
-    return this.http.get(`${this.base_url}/User?Email=${Email}&Password=${Password}`);
+    return this.http.get(`${this.base_url}/User?Email=${Email}&Password=${Password}/login`);
   }
 
-  getUserById(id: string): Observable<User> {
-    return this.http.get<User>(`${this.base_url}/User/${id}`).pipe(retry(2), catchError(this.handleError));
+  getUserById(id: number): Observable<User> {
+    return this.http.get<User>(`${this.base_url}/User/${id}`).pipe(
+      retry(2),
+      catchError(this.handleError)
+    );
   }
 
-  updateUser(User: any): Observable<any> {
-    return this.http.put(`${this.base_url}/User/${User.id}`, User);
+  updateUser(user: { Email: any; Username: any; id: number; Password: any }): Observable<User> {
+    return this.http.put<User>(`${this.base_url}/User/${user.id}`, user, this.httpOptions).pipe(
+      catchError(this.handleError)
+    );
   }
 
-  addProfile(Profile: Profile): Observable<any> {
-    return this.http.post<Profile>(`${this.base_url}/Profile`, Profile, this.httpOptions);
+  addProfile(data: any): Observable<Profile> {
+    return this.http.post<Profile>(`${this.base_url}/Profile`, JSON.stringify(data), this.httpOptions).pipe(
+      catchError(this.handleError)
+    );
   }
 
-  updateProfile(Profile: Profile): Observable<any> {
-    return this.http.put(`${this.base_url}/Profile/${Profile.Id}`, Profile, this.httpOptions);
+  updateProfile(UserId: number, data: any): Observable<Profile> {
+    return this.http.put<Profile>(`${this.base_url}/Profile/${UserId}`, JSON.stringify(data), this.httpOptions).pipe(
+      catchError(this.handleError)
+    );
   }
 
-  getProfileByUserId(UserId: string): Observable<Profile | null> {
-    return this.http.get<Profile[]>(`${this.base_url}/Profile?UserId=${UserId}`).pipe(
+  getProfileByUserId(UserId: number): Observable<Profile | null> {
+    return this.http.get<Profile[]>(`${this.base_url}/Profile/${UserId}`).pipe(
       retry(2),
       catchError(this.handleError),
       map(profiles => profiles.length > 0 ? profiles[0] : null)
     );
   }
 
-  getAllEvents(): Observable<Events[]> {
-    return this.http.get<Events[]>(`${this.base_url}/Events`).pipe(
+  getAllConferences(): Observable<Conference[]> {
+    return this.http.get<Conference[]>(`${this.base_url}/Conference`).pipe(
       retry(2),
       catchError(this.handleError)
     );
   }
 
-  getEventsById(id: any): Observable<Events> {
-    return this.http.get<Events>(`${this.base_url}/Events/${id}`).pipe(
+  getConferencesById(id: number): Observable<Conference> {
+    return this.http.get<Conference>(`${this.base_url}/Conference/${id}`).pipe(
       retry(2),
       catchError(this.handleError)
     );
   }
 
-  createEvent(event: Omit<Events, "id">): Observable<Events> {
-    return this.http.post<Events>(`${this.base_url}/Events`, event, this.httpOptions).pipe(
+  createConference(conference: Omit<Conference, "id">): Observable<Conference> {
+    return this.http.post<Conference>(`${this.base_url}/Conference`, conference, this.httpOptions).pipe(
       catchError(this.handleError)
     );
   }
 
   savePayment(payment: {
-    CardNumber: string;
+    CardNumber: number;
     Amount: string | undefined;
     Currency: string;
-    CardCVV: string
+    CardCVV: number
   }): Observable<any> {
     return this.http.post(`${this.base_url}/Payment`, payment, this.httpOptions).pipe(
       catchError(this.handleError)
     );
   }
 
-  saveRegistration(registration: { eventId: number | undefined; Apellidos: string; Nombres: string }): void {
+  saveRegistration(registration: { conferenceId: number | undefined; Apellidos: string; Nombres: string }): void {
     localStorage.setItem('registration', JSON.stringify(registration));
   }
 
-  getRegistration(): { Nombres: string, Apellidos: string, eventId: string } | null {
+  getRegistration(): { Nombres: string, Apellidos: string, conferenceId: number } | null {
     const registration = localStorage.getItem('registration');
     return registration ? JSON.parse(registration) : null;
   }
