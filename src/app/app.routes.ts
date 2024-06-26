@@ -9,6 +9,7 @@ import { NewConferencesComponent } from "./pages/eventos/neweventos/new-conferen
 import { ConferencesIdComponent } from "./pages/eventos/eventosid/conferences-id.component";
 import { ProfileComponent } from "./pages/profile/profile.component";
 import {AuthGuard} from "./pages/auth/auth.guard";
+import {PostComponent} from "./pages/post/post.component";
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -19,7 +20,8 @@ export const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard]  },
   { path: 'conferences', component: ConferencesComponent, canActivate: [AuthGuard]  },
   { path: 'newconferences', component: NewConferencesComponent, canActivate: [AuthGuard]  },
-  { path: 'conferences/:id', component: ConferencesIdComponent, canActivate: [AuthGuard]  }
+  { path: 'conferences/:id', component: ConferencesIdComponent, canActivate: [AuthGuard]  },
+  { path: 'post', component: PostComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

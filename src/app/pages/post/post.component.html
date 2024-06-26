@@ -1,0 +1,15 @@
+<div class="main-container">
+  <app-sidebar></app-sidebar>
+<form id="settings" [formGroup]="PostForm" (submit)="onSubmit()">
+  <h1>Crear Post</h1>
+  <label for="content">Contenido:</label>
+  <textarea id="content" formControlName="Content" required></textarea>
+
+  <label for="imageUrl">URL de la imagen:</label>
+  <input type="text" id="imageUrl" formControlName="ImageUrl" required>
+
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+  <button type="submit">Crear Post</button>
+</form>
+</div>

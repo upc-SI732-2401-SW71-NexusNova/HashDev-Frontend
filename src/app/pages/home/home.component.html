@@ -5,29 +5,45 @@
       <h1>Home</h1>
     </div>
     <div class="dev-content">
-      <div class="post">
-        <div class="post-header">
-          <div class="post-title">Winners of the Frontend Challenge</div>
-          <div class="post-author">By DEV Community</div>
-        </div>
-        <div class="post-image">
-          <img src="https://media.dev.to/cdn-cgi/image/width=1300/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/sh1yegc4kv0szztg3ej8.png" alt="Winners of the Frontend Challenge">
-        </div>
-        <div class="post-description">
-          <p>Here are the amazing winners of our latest Frontend Challenge! Check out their impressive entries.</p>
-        </div>
-        <div class="post-actions">
-          <button class="like-button">Like</button>
-          <button class="comment-button">Comment</button>
-        </div>
-        <div class="post-comments">
-          <div class="comment">
-            <div class="comment-author">John Doe</div>
-            <div class="comment-content">Great work everyone!</div>
+      <div *ngFor="let post of posts" class="post">
+        <div class="post-content">
+          <div class="user-info">
+            <div class="profile-picture">
+              <img [src]="post.authorProfilePictureUrl" alt="Profile Picture">
+            </div>
+            <div class="fullname">
+              {{ post.author }}
+            </div>
           </div>
-          <!-- More comments can go here -->
+          <div class="post-image">
+            <img [src]="post.ImageUrl" alt="Post Image">
+          </div>
+          <div class="post-description">
+            <p>{{ post.Content }}</p>
+          </div>
+          <div class="post-actions">
+            <button class="like-button">Like</button>
+            <button class="comment-button" (click)="toggleCommentBox(post)">Comment</button>
+          </div>
+          <div *ngIf="post.showCommentBox" class="comment-box">
+            <form [formGroup]="commentForms[post.Id]" (ngSubmit)="onSubmit(post)">
+              <label for="Content">Comment:</label>
+              <input type="text" formControlName="Content" id="Content" placeholder="Write a comment...">
+              <button type="submit">Send</button>
+            </form>
+          </div>
+
+          <div class="comments" *ngIf="post.comentarios && post.comentarios.length > 0">
+            <h3>Comentarios:</h3>
+            <div *ngFor="let comentario of post.comentarios" class="comment">
+              <p>{{ comentario.Content }}</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+  </div>
+  <div class="floating-circle">
+    <a href="/post" class="btn btn-circle">+</a>
   </div>
 </div>

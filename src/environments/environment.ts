@@ -1,6 +1,6 @@
 export const environment = {
     development: false,
-    baseURL: 'https://localhost:7121',
+    baseURL: 'https://localhost:443',
 
     firebaseConfig : {
         apiKey: "AIzaSyAPaGHgXb9cdwYegaJegsoYBJRX5Zt8S60",
